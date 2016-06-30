@@ -1,0 +1,36 @@
+{
+  "name": "mkv-subtitle-extractor",
+  "version": "1.0.0",
+  "description": "Extract subtitles from .mkv files",
+  "bin": {
+    "mkv-subtitle-extractor": "index.js"
+  },
+  "scripts": {
+    "test": "standard"
+  },
+  "keywords": [
+    "matroska",
+    "mkv",
+    "srt",
+    "rip",
+    "ripper",
+    "extract"
+  ],
+  "author": "Mathias Rasmussen <mathiasvr@gmail.com>",
+  "license": "MIT",
+  "main": "index.js",
+  "dependencies": {
+    "file-exists": "^1.0.0",
+    "matroska-subtitles": "^1.0.1",
+    "zero-fill": "^2.2.3"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mathiasvr/mkv-subtitle-extractor.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mathiasvr/mkv-subtitle-extractor/issues"
+  },
+  "homepage": "https://github.com/mathiasvr/mkv-subtitle-extractor#readme"
+}
