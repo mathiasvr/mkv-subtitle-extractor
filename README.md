@@ -7,9 +7,9 @@
 [lic-img]: http://img.shields.io/:license-MIT-blue.svg
 [lic-url]: http://mvr.mit-license.org
 
-Extract subtitles from `.mkv` files.
+Extract subtitles from .mkv files.
 
-Currently only supports the `.srt` format.
+> Currently only supports the .srt format.
 
 ## install
 
