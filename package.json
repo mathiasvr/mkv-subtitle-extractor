@@ -1,6 +1,6 @@
 {
   "name": "mkv-subtitle-extractor",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Extract subtitles from .mkv files",
   "bin": {
     "mkv-subtitle-extractor": "index.js"
