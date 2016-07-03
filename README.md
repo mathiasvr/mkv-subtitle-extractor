@@ -20,7 +20,7 @@ npm install -g mkv-subtitle-extractor
 ## usage
 
 ```
-mkv-subtitle-extractor file.mkv
+mkv-subtitle-extractor file.mkv ...
 ```
 
 All supported subtitle tracks are written to the same destination with non-overwriting (incremental) names.
