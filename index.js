@@ -29,11 +29,13 @@ module.exports = function (mkvPath) {
 
   subs.on('data', function (data) {
     if (data[0] === 'new') {
-      var subtitlePath = srtPath(data[1].language)
+      // sometimes `und` (undefined) is used as the default value, instead of leaving the tag unassigned
+      var language = data[1].language !== 'und' ? data[1].language : null
+      var subtitlePath = srtPath(language)
 
       // obtain unique filename (don't overwrite)
       for (var i = 2; fileExists(subtitlePath); i++) {
-        subtitlePath = srtPath(data[1].language + i || i)
+        subtitlePath = language ? srtPath(language + i) : srtPath(i)
       }
 
       tracks.set(data[1].track, {
