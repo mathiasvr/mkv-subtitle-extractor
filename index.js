@@ -7,7 +7,7 @@ const matroskaSubtitles = require('matroska-subtitles')
 /**
  * Reads mkv file and writes srt files in same location
  */
-module.exports = function (mkvPath) {
+module.exports = function (mkvPath, outputDir) {
   const file = fs.createReadStream(mkvPath)
 
   file.on('error', function (err) {
@@ -15,7 +15,7 @@ module.exports = function (mkvPath) {
     process.exit(1)
   })
 
-  const dir = path.dirname(mkvPath)
+  const dir = outputDir || path.dirname(mkvPath)
   const name = path.basename(mkvPath, path.extname(mkvPath))
 
   // create srt path from language suffix
