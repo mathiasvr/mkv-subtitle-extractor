@@ -20,8 +20,8 @@
   "author": "Mathias Rasmussen <mathiasvr@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "file-exists": "^1.0.0",
-    "matroska-subtitles": "^1.0.1",
+    "file-exists": "^4.0.0",
+    "matroska-subtitles": "^2.0.1",
     "zero-fill": "^2.2.3"
   },
   "devDependencies": {},
