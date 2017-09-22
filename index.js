@@ -8,33 +8,33 @@ const matroskaSubtitles = require('matroska-subtitles')
  * Reads mkv file and writes srt files in same location
  */
 module.exports = function (mkvPath) {
-  var file = fs.createReadStream(mkvPath)
+  const file = fs.createReadStream(mkvPath)
 
   file.on('error', function (err) {
     console.error('Error:', err.message)
     process.exit(1)
   })
 
-  var dir = path.dirname(mkvPath)
-  var name = path.basename(mkvPath, path.extname(mkvPath))
+  const dir = path.dirname(mkvPath)
+  const name = path.basename(mkvPath, path.extname(mkvPath))
 
   // create srt path from language suffix
-  var srtPath = function (language) {
-    var languageSuffix = language ? '.' + language : ''
+  const srtPath = function (language) {
+    const languageSuffix = language ? '.' + language : ''
     return path.join(dir, name + languageSuffix + '.srt')
   }
 
-  var tracks = new Map()
-  var subs = matroskaSubtitles()
+  const tracks = new Map()
+  const subs = matroskaSubtitles()
 
   subs.on('data', function (data) {
     if (data[0] === 'new') {
       // sometimes `und` (undefined) is used as the default value, instead of leaving the tag unassigned
-      var language = data[1].language !== 'und' ? data[1].language : null
-      var subtitlePath = srtPath(language)
+      const language = data[1].language !== 'und' ? data[1].language : null
+      let subtitlePath = srtPath(language)
 
       // obtain unique filename (don't overwrite)
-      for (var i = 2; fileExists(subtitlePath); i++) {
+      for (let i = 2; fileExists(subtitlePath); i++) {
         subtitlePath = language ? srtPath(language + i) : srtPath(i)
       }
 
@@ -43,8 +43,8 @@ module.exports = function (mkvPath) {
         file: fs.createWriteStream(subtitlePath)
       })
     } else {
-      var track = tracks.get(data[0])
-      var sub = data[1]
+      const track = tracks.get(data[0])
+      const sub = data[1]
 
       // convert to srt format
       track.file.write(`${track.index++}\r\n`)
@@ -71,12 +71,12 @@ module.exports = function (mkvPath) {
 
 // https://stackoverflow.com/questions/9763441/milliseconds-to-time-in-javascript
 function msToTime (s) {
-  var ms = s % 1000
+  const ms = s % 1000
   s = (s - ms) / 1000
-  var secs = s % 60
+  const secs = s % 60
   s = (s - secs) / 60
-  var mins = s % 60
-  var hrs = (s - mins) / 60
+  const mins = s % 60
+  const hrs = (s - mins) / 60
 
   return z(2, hrs) + ':' + z(2, mins) + ':' + z(2, secs) + ',' + z(3, ms)
 }
