@@ -13,8 +13,6 @@ if (process.argv.length < 3 || process.argv[2] === '--help') {
 
 const mkvPaths = process.argv.slice(2)
 
-console.log('Processing ' + mkvPaths.join(' & '))
-
 let promise = Promise.resolve()
 
 mkvPaths.forEach(path => {
