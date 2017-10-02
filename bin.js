@@ -19,7 +19,7 @@ mkvPaths.forEach(path => {
   promise = promise.then(() => mkvSubtitleExtractor(path)
     .then(tracks => {
       console.log(path)
-      if (tracks.size === 0) return console.log('    No subtitle tracks found.')
+      if (tracks.length === 0) return console.log('    No subtitle tracks found.')
       tracks.forEach(track => console.log(`    Track ${z(2, track.number)} → ${track.path}`))
     })
     .catch(err => {
